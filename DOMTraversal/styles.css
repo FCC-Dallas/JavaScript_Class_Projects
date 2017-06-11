@@ -1,0 +1,6 @@
+.container{
+	/* give it a specific width */
+	width: 30%;
+	/*center the div*/
+	margin: 0 auto;
+}
