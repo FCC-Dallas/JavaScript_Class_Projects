@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
-                                        //Username below
-        var repoNames = [];
-        fetch('https://api.github.com/users/BboyAkers/repos')
+    var repoNames = [];
+
+    fetch('https://api.github.com/users/SparksD2145/repos')
         .then(function(response){
             return response.json();
         })
@@ -11,9 +11,30 @@ document.addEventListener("DOMContentLoaded", function(){
                 repoNames.push(item.name);
                 list.innerHTML += "<li>" + item.name + "</li>";
             })
-            
-            
-        })
-       
-})
 
+
+        });
+
+    fetch('https://api.github.com/users/SparksD2145')
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function () {
+            document.getElementById('user').innerHTML = '<h1 style="color: red;">ERROR LOADING USER DATA</h1>';
+        })
+        .then(function (responseJson) {
+            var userJson = JSON.stringify(responseJson, null, 4);
+
+            var template = `
+                <h1>${responseJson.login}</h1>
+                <img width="100" src="${responseJson.avatar_url}" />
+                <br /><pre>${userJson}</code>
+            `;
+
+            document.getElementById('user').innerHTML = template;
+
+            var test = document.getElementById('test');
+            test.href = responseJson.html_url;
+            test.innerHTML = responseJson.html_url;
+        });
+})
