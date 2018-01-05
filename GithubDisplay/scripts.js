@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
         })
         .then(function(myJson){
             var list = document.getElementById("list");
+
             myJson.forEach(function(item){
                 repoNames.push(item.name);
                 list.innerHTML += "<li>" + item.name + "</li>";
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function(){
             var template = `
                 <h1>${responseJson.login}</h1>
                 <img width="100" src="${responseJson.avatar_url}" />
-                <br /><pre>${userJson}</code>
+                <br /><pre>${userJson}</pre>
             `;
 
             document.getElementById('user').innerHTML = template;
